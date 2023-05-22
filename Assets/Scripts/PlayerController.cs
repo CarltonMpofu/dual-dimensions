@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if (!capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask(climbLayer))) 
         {
             rb.gravityScale = gravityScaleAtStart;  
+            myAnimator.SetBool("isClimbing", false);
             return; 
         }
         //Debug.Log("Do");
