@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Collider2D feet;
 
+
     Rigidbody2D rb;
     CapsuleCollider2D capsuleCollider2D;
     Animator myAnimator;
@@ -108,4 +109,6 @@ public class PlayerController : MonoBehaviour
 
         isJumping = true;
     }
+
+    
 }
