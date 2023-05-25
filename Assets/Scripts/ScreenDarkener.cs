@@ -21,10 +21,13 @@ public class ScreenDarkener : MonoBehaviour
     SwitchDimension switchDimension;
     Animator myAnimator;
 
+    
+
     private void Start()
     {
         switchDimension = FindObjectOfType<SwitchDimension>();
         myAnimator = FindObjectOfType<Animator>();
+        
 
         makeScreenDark = false;
         makeScreenLight = false;
@@ -51,6 +54,8 @@ public class ScreenDarkener : MonoBehaviour
                 makeScreenDark = false;
                 switchDimension.ChangeDimension();
 
+                //EnableTilemapCollider();
+
                 StartLighteningAnimation();
             }
         }
@@ -68,6 +73,7 @@ public class ScreenDarkener : MonoBehaviour
             if(timer >= endAnimationDuration)
             {
                 makeScreenLight = false;
+                //DisableTilemapCollider();
                 switchDimension.SetInLightDimension();
             }
         }

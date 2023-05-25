@@ -6,7 +6,13 @@ using UnityEngine.Tilemaps;
 
 public class SwitchDimension : MonoBehaviour
 {
-    [SerializeField] Tilemap myTilemap;
+    
+    [SerializeField] Tilemap platformTilemap;
+    [SerializeField] Tilemap darkPlatformTilemap;
+    [SerializeField] SpriteRenderer playerSpriteRenderer;
+    
+
+    [Header("Colors")]
     [SerializeField] Color defaultTilemapColor;
     [SerializeField] Color backgroundColor;
     [SerializeField] Color defaultDackgroundColor;
@@ -16,16 +22,21 @@ public class SwitchDimension : MonoBehaviour
     [SerializeField] Color defaultPlayerColor;
     [SerializeField] Color spikeColor;
     [SerializeField] Color defaultSpikeColor;
-    [SerializeField] SpriteRenderer playerSpriteRenderer;
+    
 
     bool inLightDimension;
     bool canSwitch;
+
+    CullingMaskController cullingMaskController;
 
     // Start is called before the first frame update
     void Start()
     {
         inLightDimension = true;
         canSwitch = true;
+
+        cullingMaskController = FindObjectOfType<CullingMaskController>();
+        DisableTilemapCollider();
     }
 
     // Update is called once per frame
@@ -53,11 +64,19 @@ public class SwitchDimension : MonoBehaviour
 
     public void ChangeDimension()
     {
+
         if (inLightDimension)
+        {
             ChangeToDarkDimension();
+            cullingMaskController.ShowObjects();
+            EnableTilemapCollider();
+        }      
         else
+        {
             ChangeToLightDimension();
-        
+            cullingMaskController.HideObjects();
+            DisableTilemapCollider();
+        }  
     }
 
     public void SetInLightDimension()
@@ -68,7 +87,9 @@ public class SwitchDimension : MonoBehaviour
 
     private void ChangeToDarkDimension()
     {
-        myTilemap.color = Color.black;
+        platformTilemap.color = Color.black;
+        darkPlatformTilemap.color = Color.black;
+
         Background[] myBackgrounds = FindObjectsOfType<Background>();
         foreach (Background backgroound in myBackgrounds)
         {
@@ -95,7 +116,7 @@ public class SwitchDimension : MonoBehaviour
 
     private void ChangeToLightDimension()
     {
-        myTilemap.color = defaultTilemapColor;
+        platformTilemap.color = defaultTilemapColor;
         Background[] myBackgrounds = FindObjectsOfType<Background>();
         foreach (Background backgroound in myBackgrounds)
         {
@@ -118,5 +139,39 @@ public class SwitchDimension : MonoBehaviour
         }
 
         playerSpriteRenderer.color = defaultPlayerColor;
+    }
+
+    private static void DisableTilemapCollider()
+    {
+        TilemapCollider2D[] tilemapCollider2Ds = FindObjectsOfType<TilemapCollider2D>();
+        //Debug.Log(tilemapCollider2Ds.Length);
+        foreach (TilemapCollider2D tilemapCollider2D in tilemapCollider2Ds)
+        {
+            if (tilemapCollider2D.gameObject.CompareTag("Dark"))
+            {
+                tilemapCollider2D.enabled = false;
+            }
+            else if(tilemapCollider2D.gameObject.CompareTag("Light"))
+            {
+                tilemapCollider2D.enabled = true;
+            }
+        }
+    }
+
+    private static void EnableTilemapCollider()
+    {
+        TilemapCollider2D[] tilemapCollider2Ds = FindObjectsOfType<TilemapCollider2D>();
+        //Debug.Log(tilemapCollider2Ds.Length);
+        foreach (TilemapCollider2D tilemapCollider2D in tilemapCollider2Ds)
+        {
+            if (tilemapCollider2D.gameObject.CompareTag("Dark"))
+            {
+                tilemapCollider2D.enabled = true;
+            }
+            else if(tilemapCollider2D.gameObject.CompareTag("Light"))
+            {
+                tilemapCollider2D.enabled = false;
+            }
+        }
     }
 }

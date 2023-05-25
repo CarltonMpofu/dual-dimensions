@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dark
+  - Climbing
+  - Light
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - Player
   - Background
   - Dark
-  - 
-  - 
+  - DarkClimbing
+  - LightPlatform
   - 
   - 
   - 

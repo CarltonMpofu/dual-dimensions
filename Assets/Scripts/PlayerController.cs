@@ -26,7 +26,11 @@ public class PlayerController : MonoBehaviour
 
 
     const string platformLayer = "Platform";
+    const string LightPlatformLayer = "LightPlatform";
     const string climbLayer = "Climbing";
+    const string darkClimbLayer = "DarkClimbing";
+    const string darkPlatformLayer = "Dark";
+
 
     void Awake()
     {
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     void ClimbLadder()
    {
-        if (!capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask(climbLayer))) 
+        if (!capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask(climbLayer, darkClimbLayer))) 
         {
             rb.gravityScale = gravityScaleAtStart;  
             myAnimator.SetBool("isClimbing", false);
@@ -105,7 +109,7 @@ public class PlayerController : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (!isActive) { return; }
-        if (!feet.IsTouchingLayers(LayerMask.GetMask(platformLayer))) { return; }
+        if (!feet.IsTouchingLayers(LayerMask.GetMask( new string[] {platformLayer, darkPlatformLayer, LightPlatformLayer}))) { return; }
 
         isJumping = true;
     }
