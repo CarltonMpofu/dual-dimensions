@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float climbSpeed = 5f;
     [SerializeField] Collider2D feet;
 
+    // [SerializeField] CapsuleCollider2D topCapsuleCollider2D;
+    // [SerializeField] CapsuleCollider2D bottomCapsuleCollider2D;
+
 
     Rigidbody2D rb;
     CapsuleCollider2D capsuleCollider2D;
@@ -81,6 +84,15 @@ public class PlayerController : MonoBehaviour
             myAnimator.SetBool("isClimbing", false);
             return; 
         }
+
+        // if (!bottomCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask(climbLayer, darkClimbLayer))) 
+        // {
+        //     rb.gravityScale = gravityScaleAtStart;  
+        //     myAnimator.SetBool("isClimbing", false);
+        //     return; 
+        // }
+
+
         //Debug.Log("Do");
         bool playerHasVerticalSpeed = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);

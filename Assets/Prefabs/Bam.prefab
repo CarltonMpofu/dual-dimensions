@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 624555072447300482}
   m_Layer: 8
   m_Name: Bam
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,6 @@ Transform:
   m_Children:
   - {fileID: 4580520235310957720}
   - {fileID: 4580520235278013851}
-  - {fileID: 9060537321829483007}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,64 +325,3 @@ MonoBehaviour:
   defaultSpikeColor: {r: 1, g: 0.53333336, b: 0.5254902, a: 1}
   climbingColor: {r: 0.16078432, g: 0.15294118, b: 0.15294118, a: 1}
   defaultClimbingColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &7095269973511290733
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9060537321829483007}
-  - component: {fileID: 3260669064189355651}
-  - component: {fileID: 2141082887106177344}
-  m_Layer: 8
-  m_Name: Dot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9060537321829483007
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095269973511290733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4580520236044085988}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3260669064189355651
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095269973511290733}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.02447176, y: -0.21674871}
-  serializedVersion: 2
-  m_Radius: 0.031541348
---- !u!114 &2141082887106177344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095269973511290733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a566b6ba0cab44c8b270b347af3c9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

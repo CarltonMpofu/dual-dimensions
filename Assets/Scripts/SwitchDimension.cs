@@ -32,15 +32,22 @@ public class SwitchDimension : MonoBehaviour
     bool canSwitch;
 
     CullingMaskController cullingMaskController;
+    //TileColliderr[] tileColliders;
 
     // Start is called before the first frame update
     void Start()
     {
+        HideTileColliders();
+        
         inLightDimension = true;
         canSwitch = true;
 
         cullingMaskController = FindObjectOfType<CullingMaskController>();
+        //tileColliders = FindObjectsOfType<TileColliderr>();
+
         DisableTilemapCollider();
+
+
     }
 
     // Update is called once per frame
@@ -161,13 +168,18 @@ public class SwitchDimension : MonoBehaviour
             else if(tilemapCollider2D.gameObject.CompareTag("Light"))
             {
                 tilemapCollider2D.enabled = true;
+                
             }
         }
+
+        EnableTileCollider();
     }
 
     private static void EnableTilemapCollider()
     {
         TilemapCollider2D[] tilemapCollider2Ds = FindObjectsOfType<TilemapCollider2D>();
+
+
         //Debug.Log(tilemapCollider2Ds.Length);
         foreach (TilemapCollider2D tilemapCollider2D in tilemapCollider2Ds)
         {
@@ -175,10 +187,62 @@ public class SwitchDimension : MonoBehaviour
             {
                 tilemapCollider2D.enabled = true;
             }
-            else if(tilemapCollider2D.gameObject.CompareTag("Light"))
+            else if (tilemapCollider2D.gameObject.CompareTag("Light"))
             {
                 tilemapCollider2D.enabled = false;
             }
         }
+
+        DisableTileCollider();
     }
+
+    private static void DisableTileCollider()
+    {
+        TileColliderr[] tileColliders = FindObjectsOfType<TileColliderr>();
+        foreach (TileColliderr tileCollider in tileColliders)
+        {
+            if (tileCollider.gameObject.CompareTag("Dark"))
+            {
+                tileCollider.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                //tileCollider.gameObject.SetActive(true);
+
+            }
+            else if (tileCollider.gameObject.CompareTag("Light"))
+            {
+                tileCollider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                //tileCollider.gameObject.SetActive(false);
+
+            }
+        }
+    }
+
+    private static void EnableTileCollider()
+    {
+        TileColliderr[] tileColliders = FindObjectsOfType<TileColliderr>();
+        foreach (TileColliderr tileCollider in tileColliders)
+        {
+            if (tileCollider.gameObject.CompareTag("Dark"))
+            {
+                tileCollider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                //tileCollider.gameObject.SetActive(false);
+
+            }
+            else if (tileCollider.gameObject.CompareTag("Light"))
+            {
+                tileCollider.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                //tileCollider.gameObject.SetActive(true);
+
+            }
+        }
+    }
+
+    private static void HideTileColliders()
+    {
+        TileColliderr[] tileColliders = FindObjectsOfType<TileColliderr>();
+        foreach (TileColliderr tileCollider in tileColliders)
+        {
+            tileCollider.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0f);
+        }
+    }
+
 }
