@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 624555072447300484}
   - component: {fileID: 624555072447300482}
   m_Layer: 8
-  m_Name: Bam
+  m_Name: Bam 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

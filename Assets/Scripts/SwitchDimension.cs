@@ -9,6 +9,8 @@ public class SwitchDimension : MonoBehaviour
     
     [SerializeField] Tilemap platformTilemap;
     [SerializeField] Tilemap darkPlatformTilemap;
+
+    [SerializeField] Tilemap climbingTilemap;
     [SerializeField] SpriteRenderer playerSpriteRenderer;
     
 
@@ -22,6 +24,8 @@ public class SwitchDimension : MonoBehaviour
     [SerializeField] Color defaultPlayerColor;
     [SerializeField] Color spikeColor;
     [SerializeField] Color defaultSpikeColor;
+    [SerializeField] Color climbingColor;
+    [SerializeField] Color defaultClimbingColor;
     
 
     bool inLightDimension;
@@ -89,6 +93,7 @@ public class SwitchDimension : MonoBehaviour
     {
         platformTilemap.color = Color.black;
         darkPlatformTilemap.color = Color.black;
+        climbingTilemap.color = climbingColor;
 
         Background[] myBackgrounds = FindObjectsOfType<Background>();
         foreach (Background backgroound in myBackgrounds)
@@ -117,6 +122,8 @@ public class SwitchDimension : MonoBehaviour
     private void ChangeToLightDimension()
     {
         platformTilemap.color = defaultTilemapColor;
+        climbingTilemap.color = defaultClimbingColor;
+
         Background[] myBackgrounds = FindObjectsOfType<Background>();
         foreach (Background backgroound in myBackgrounds)
         {
