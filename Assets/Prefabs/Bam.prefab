@@ -325,3 +325,5 @@ MonoBehaviour:
   defaultSpikeColor: {r: 1, g: 0.53333336, b: 0.5254902, a: 1}
   climbingColor: {r: 0.16078432, g: 0.15294118, b: 0.15294118, a: 1}
   defaultClimbingColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultRockColor: {r: 0.7294118, g: 0.5294118, b: 0.34117648, a: 1}
+  defaultMovingPlatformColor: {r: 0.9372549, g: 0.5921569, b: 0.36078432, a: 1}

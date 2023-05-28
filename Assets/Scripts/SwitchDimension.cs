@@ -26,6 +26,8 @@ public class SwitchDimension : MonoBehaviour
     [SerializeField] Color defaultSpikeColor;
     [SerializeField] Color climbingColor;
     [SerializeField] Color defaultClimbingColor;
+    [SerializeField] Color defaultRockColor;
+    [SerializeField] Color defaultMovingPlatformColor;
     
 
     bool inLightDimension;
@@ -123,6 +125,20 @@ public class SwitchDimension : MonoBehaviour
             spriteRenderer.color = spikeColor;
         }
 
+        Rock[] myRocks = FindObjectsOfType<Rock>();
+        foreach (Rock rock in myRocks)
+        {
+            SpriteRenderer spriteRenderer = rock.gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = Color.black;
+        }
+
+        MovingPlatform[] myMovingPlatforms = FindObjectsOfType<MovingPlatform>();
+        foreach (MovingPlatform myMovingPlatform in myMovingPlatforms)
+        {
+            SpriteRenderer spriteRenderer = myMovingPlatform.gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = Color.black;
+        }
+
         playerSpriteRenderer.color = playerColor;
     }
 
@@ -150,6 +166,20 @@ public class SwitchDimension : MonoBehaviour
         {
             SpriteRenderer spriteRenderer = spike.gameObject.GetComponent<SpriteRenderer>();
             spriteRenderer.color = defaultSpikeColor;
+        }
+
+        Rock[] myRocks = FindObjectsOfType<Rock>();
+        foreach (Rock rock in myRocks)
+        {
+            SpriteRenderer spriteRenderer = rock.gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = defaultRockColor;
+        }
+
+        MovingPlatform[] myMovingPlatforms = FindObjectsOfType<MovingPlatform>();
+        foreach (MovingPlatform myMovingPlatform in myMovingPlatforms)
+        {
+            SpriteRenderer spriteRenderer = myMovingPlatform.gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = defaultMovingPlatformColor;
         }
 
         playerSpriteRenderer.color = defaultPlayerColor;
