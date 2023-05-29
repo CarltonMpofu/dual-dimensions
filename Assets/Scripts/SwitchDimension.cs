@@ -67,6 +67,7 @@ public class SwitchDimension : MonoBehaviour
         //     ChangeToLightDimension();
         if(canSwitch)
         {
+            FindObjectOfType<PlayerController>().isActive = false;
             canSwitch = false;
             FindObjectOfType<ScreenDarkener>().StartDarkeningAnimation();
         }
@@ -96,6 +97,7 @@ public class SwitchDimension : MonoBehaviour
     {
         inLightDimension = !inLightDimension;
         canSwitch = true;
+        FindObjectOfType<PlayerController>().isActive = true;
     }
 
     private void ChangeToDarkDimension()

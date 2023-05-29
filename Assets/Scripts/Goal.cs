@@ -36,8 +36,10 @@ public class Goal : MonoBehaviour
         if (other.GetComponent<Wallet>() == playerWallet)
         {
             if(isUnlocked) {
-                LevelManager.Instance.ReloadLevel();
+                LevelManager.Instance.LoadNextLevel();
             }
         }
     }
+
+    
 }

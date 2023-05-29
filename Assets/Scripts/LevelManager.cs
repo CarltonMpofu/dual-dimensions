@@ -40,7 +40,49 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadLevel()
     {
+        //Debug.Log("Doo");
         player.isActive = false;
+        // GameSession gameSession = FindObjectOfType<GameSession>();
+        // gameSession.ProcessPlayerDeath();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadNextLevel()
+    {
+        StartCoroutine(LoadLevel());
+    }
+
+    IEnumerator LoadLevel()
+    {
+        //player.isActive = false;
+        yield return new WaitForSecondsRealtime(1f);
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if(nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+        FindObjectOfType<ScenePersist>().ResetScenePersist();
+        SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    public void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    public void LoadStartScene()
+    {
+        //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadGameOverScene()
+    {
+        //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene("GameOverScene");
     }
 }

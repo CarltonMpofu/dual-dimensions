@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection;
     Vector2 rawInput;
     bool isJumping;
+    bool isAlive;
 
     float gravityScaleAtStart;
 
@@ -41,6 +42,8 @@ public class PlayerController : MonoBehaviour
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         myAnimator = GetComponentInChildren<Animator>();
         gravityScaleAtStart = rb.gravityScale;
+
+        isAlive = true;
     }
 
     void FixedUpdate()
@@ -126,5 +129,15 @@ public class PlayerController : MonoBehaviour
         isJumping = true;
     }
 
+    public void Die()
+    {
+        if(isAlive)
+        {
+            isAlive = false;
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+            //LevelManager.Instance.ReloadLevel();   
+        }
+        
+    }
     
 }

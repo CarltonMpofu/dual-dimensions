@@ -8,12 +8,18 @@ public class Wallet : MonoBehaviour
 
     public int GetCoins()
     {
-        return coins;
+        //return coins;
+        ScenePersist scenePersist =  FindObjectOfType<ScenePersist>();
+        if(!scenePersist)
+            return coins;
+        else
+            return scenePersist.GetCoins();
     }
 
     public void IncrementCoins()
     {
         coins++;
+        FindObjectOfType<ScenePersist>().IncrementCoinsCollected();
     }
 
 }

@@ -39,7 +39,7 @@ public class SpawnFallingObjects : MonoBehaviour
 
         
         //spawnPosition.y += spawnRadius;
-        Debug.Log(spawnPosition);
+        //Debug.Log(spawnPosition);
 
         Quaternion spawnRotation = Quaternion.identity;
 

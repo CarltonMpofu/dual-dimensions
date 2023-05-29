@@ -25,8 +25,8 @@ public class ScreenDarkener : MonoBehaviour
 
     private void Start()
     {
-        switchDimension = FindObjectOfType<SwitchDimension>();
-        myAnimator = FindObjectOfType<Animator>();
+        
+        
         
 
         makeScreenDark = false;
@@ -52,7 +52,9 @@ public class ScreenDarkener : MonoBehaviour
             if(timer >= startAnimationDuration)
             {
                 makeScreenDark = false;
-                switchDimension.ChangeDimension();
+                switchDimension = FindObjectOfType<SwitchDimension>();
+                if(switchDimension)
+                    switchDimension.ChangeDimension();
 
                 //EnableTilemapCollider();
 
@@ -74,13 +76,16 @@ public class ScreenDarkener : MonoBehaviour
             {
                 makeScreenLight = false;
                 //DisableTilemapCollider();
-                switchDimension.SetInLightDimension();
+                switchDimension = FindObjectOfType<SwitchDimension>();
+                if(switchDimension)
+                    switchDimension.SetInLightDimension();
             }
         }
     }
 
     public void StartDarkeningAnimation()
     {
+        myAnimator = FindObjectOfType<Animator>();
         initialAlpha = 0f;
         targetAlpha = 1f;
 
@@ -89,11 +94,13 @@ public class ScreenDarkener : MonoBehaviour
         currentAlpha = initialAlpha;
 
         makeScreenDark = true;
-        myAnimator.SetBool("changeDimension", true);
+        if(myAnimator)
+            myAnimator.SetBool("changeDimension", true);
     }
 
     private void StartLighteningAnimation()
     {
+        myAnimator = FindObjectOfType<Animator>();
         initialAlpha = 1f;
         targetAlpha = 0f;
         image.color = new Color(1f, 1f, 1f, initialAlpha);
@@ -101,6 +108,7 @@ public class ScreenDarkener : MonoBehaviour
         timer = 0f;
         currentAlpha = initialAlpha;
         makeScreenLight = true;
-        myAnimator.SetBool("changeDimension", false);
+        if(myAnimator)
+            myAnimator.SetBool("changeDimension", false);
     }
 }

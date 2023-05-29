@@ -8,7 +8,7 @@ public class TileColliderr : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             //Debug.Log("Player");
-            LevelManager.Instance.ReloadLevel();    
+            FindObjectOfType<PlayerController>().Die();
         }
     }
 }
