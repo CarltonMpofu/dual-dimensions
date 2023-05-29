@@ -1,5 +1,10 @@
 # Dual-Dimensions
 
+## The gameDev.tv Game Jam 2023
+- An event where participants work as part of a team or solo to make a playable game in 10 days according to a theme!
+- **THEME: Life in 2 dimensions.**
+- This is my submission (working solo) for the Game Jam which ran from May 19th to May 29th.
+
 ## Welcome to Dual Dimensions!
 
 **Instructions:**
@@ -16,7 +21,7 @@
 - Each dimension holds unique challenges and secrets.
 - Use your dimensional abilities to overcome obstacles and discover new paths.
 
-Good luck on your journey through the Duel Realms! Enjoy the adventure!
+Good luck on your journey through the Dual Realms! Enjoy the adventure!
 
 ## Play Game
 - <a href="https://carltonmpofu.itch.io/dual-dimensions" title="play game">Play Game</a>
