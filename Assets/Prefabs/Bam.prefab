@@ -317,11 +317,11 @@ MonoBehaviour:
   defaultTilemapColor: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   backgroundColor: {r: 0.2784314, g: 0.38039216, b: 0.39607844, a: 1}
   defaultDackgroundColor: {r: 0.49019608, g: 0.73333335, b: 0.81960785, a: 1}
-  coinColor: {r: 0.6039216, g: 0.5803922, b: 0, a: 1}
+  coinColor: {r: 0.62352943, g: 0.62352943, b: 0.62352943, a: 1}
   defaultCoinColor: {r: 1, g: 0.87058824, b: 0.26666668, a: 1}
   playerColor: {r: 0.79607844, g: 0.8235294, b: 0.83137256, a: 1}
   defaultPlayerColor: {r: 1, g: 1, b: 1, a: 1}
-  spikeColor: {r: 0.78431374, g: 0.19215687, b: 0.18039216, a: 1}
+  spikeColor: {r: 0, g: 0, b: 0, a: 1}
   defaultSpikeColor: {r: 1, g: 0.53333336, b: 0.5254902, a: 1}
   climbingColor: {r: 0.16078432, g: 0.15294118, b: 0.15294118, a: 1}
   defaultClimbingColor: {r: 1, g: 1, b: 1, a: 1}
