@@ -243,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialAlpha: 1
   targetAlpha: 0
-  startAnimationDuration: 1
-  endAnimationDuration: 2
+  startAnimationDuration: 0.2
+  endAnimationDuration: 0.3
   makeScreenDark: 0
   makeScreenLight: 0
 --- !u!1 &8628514902159378861
