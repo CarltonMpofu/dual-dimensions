@@ -25,9 +25,12 @@ public class ScreenDarkener : MonoBehaviour
 
     private void Start()
     {
-        
-        
-        
+        PlayerController player = FindObjectOfType<PlayerController>();
+        myAnimator = player.gameObject.GetComponentInChildren<Animator>();
+        if(!myAnimator)
+        {
+            Debug.LogError("Player animator not found");
+        }
 
         makeScreenDark = false;
         makeScreenLight = false;
@@ -85,7 +88,7 @@ public class ScreenDarkener : MonoBehaviour
 
     public void StartDarkeningAnimation()
     {
-        myAnimator = FindObjectOfType<Animator>();
+        //myAnimator = FindObjectOfType<Animator>();
         initialAlpha = 0f;
         targetAlpha = 1f;
 
@@ -94,13 +97,12 @@ public class ScreenDarkener : MonoBehaviour
         currentAlpha = initialAlpha;
 
         makeScreenDark = true;
-        if(myAnimator)
-            myAnimator.SetBool("changeDimension", true);
+        myAnimator.SetBool("changeDimension", true);
     }
 
     private void StartLighteningAnimation()
     {
-        myAnimator = FindObjectOfType<Animator>();
+        
         initialAlpha = 1f;
         targetAlpha = 0f;
         image.color = new Color(1f, 1f, 1f, initialAlpha);
@@ -108,7 +110,6 @@ public class ScreenDarkener : MonoBehaviour
         timer = 0f;
         currentAlpha = initialAlpha;
         makeScreenLight = true;
-        if(myAnimator)
-            myAnimator.SetBool("changeDimension", false);
+        myAnimator.SetBool("changeDimension", false);
     }
 }
