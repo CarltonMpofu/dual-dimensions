@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1032236557}
   - component: {fileID: 1032236558}
   m_Layer: 0
-  m_Name: Tile Collider
+  m_Name: Hidden Collider
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

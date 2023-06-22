@@ -7,18 +7,18 @@ public class CullingMaskController : MonoBehaviour
 
     private void Awake() 
     {
-        HideObjects();
+        ShowLightObjects();
     }
 
     // Enable rendering of the ShowHideLayer
-    public void HideObjects()
+    public void ShowLightObjects()
     {
         Camera.main.cullingMask = lightDimensionLayerMask;
     
     }
 
     // Disable rendering of the ShowHideLayer
-    public void ShowObjects()
+    public void ShowDarkObjects()
     {
         Camera.main.cullingMask = darkDimensionLayerMask;
     }

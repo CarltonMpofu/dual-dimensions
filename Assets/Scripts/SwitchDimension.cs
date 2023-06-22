@@ -39,7 +39,7 @@ public class SwitchDimension : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HideTileColliders();
+        HideHiddenColliders();
         
         inLightDimension = true;
         canSwitch = true;
@@ -47,8 +47,9 @@ public class SwitchDimension : MonoBehaviour
         cullingMaskController = FindObjectOfType<CullingMaskController>();
         //tileColliders = FindObjectsOfType<TileColliderr>();
 
-        DisableTilemapCollider();
-
+        ChangeToLightDimension();
+        cullingMaskController.ShowLightObjects();
+        EnableLightTilemapCollider2Ds();
 
     }
 
@@ -61,10 +62,6 @@ public class SwitchDimension : MonoBehaviour
     //Used by the input system
     void OnSwitch(InputValue value)
     {
-        // if(inLightDimension)
-        //     ChangeToDarkDimension();
-        // else
-        //     ChangeToLightDimension();
         if(canSwitch)
         {
             FindObjectOfType<PlayerController>().isActive = false;
@@ -82,14 +79,14 @@ public class SwitchDimension : MonoBehaviour
         if (inLightDimension)
         {
             ChangeToDarkDimension();
-            cullingMaskController.ShowObjects();
-            EnableTilemapCollider();
+            cullingMaskController.ShowDarkObjects();
+            EnableDarkTilemapCollider2Ds();
         }      
         else
         {
             ChangeToLightDimension();
-            cullingMaskController.HideObjects();
-            DisableTilemapCollider();
+            cullingMaskController.ShowLightObjects();
+            EnableLightTilemapCollider2Ds();
         }  
     }
 
@@ -187,16 +184,17 @@ public class SwitchDimension : MonoBehaviour
         playerSpriteRenderer.color = defaultPlayerColor;
     }
 
-    private static void DisableTilemapCollider()
+    private static void EnableLightTilemapCollider2Ds()
     {
         TilemapCollider2D[] tilemapCollider2Ds = FindObjectsOfType<TilemapCollider2D>();
-        //Debug.Log(tilemapCollider2Ds.Length);
         foreach (TilemapCollider2D tilemapCollider2D in tilemapCollider2Ds)
         {
+            // Disable dark TilemapCollider2Ds
             if (tilemapCollider2D.gameObject.CompareTag("Dark"))
             {
                 tilemapCollider2D.enabled = false;
             }
+            // Enable light TilemapCollider2Ds
             else if(tilemapCollider2D.gameObject.CompareTag("Light"))
             {
                 tilemapCollider2D.enabled = true;
@@ -204,34 +202,35 @@ public class SwitchDimension : MonoBehaviour
             }
         }
 
-        EnableTileCollider();
+        EnableLightHiddenColliders();
     }
 
-    private static void EnableTilemapCollider()
+    private static void EnableDarkTilemapCollider2Ds()
     {
         TilemapCollider2D[] tilemapCollider2Ds = FindObjectsOfType<TilemapCollider2D>();
 
 
-        //Debug.Log(tilemapCollider2Ds.Length);
         foreach (TilemapCollider2D tilemapCollider2D in tilemapCollider2Ds)
         {
+            // Enable dark TilemapCollider2Ds
             if (tilemapCollider2D.gameObject.CompareTag("Dark"))
             {
                 tilemapCollider2D.enabled = true;
             }
+            // Disable light TilemapCollider2Ds
             else if (tilemapCollider2D.gameObject.CompareTag("Light"))
             {
                 tilemapCollider2D.enabled = false;
             }
         }
 
-        DisableTileCollider();
+        EnableDarkHiddenColliders();
     }
 
-    private static void DisableTileCollider()
+    private static void EnableDarkHiddenColliders()
     {
-        TileColliderr[] tileColliders = FindObjectsOfType<TileColliderr>();
-        foreach (TileColliderr tileCollider in tileColliders)
+        HiddenCollider[] tileColliders = FindObjectsOfType<HiddenCollider>();
+        foreach (HiddenCollider tileCollider in tileColliders)
         {
             if (tileCollider.gameObject.CompareTag("Dark"))
             {
@@ -248,30 +247,31 @@ public class SwitchDimension : MonoBehaviour
         }
     }
 
-    private static void EnableTileCollider()
+    private static void EnableLightHiddenColliders()
     {
-        TileColliderr[] tileColliders = FindObjectsOfType<TileColliderr>();
-        foreach (TileColliderr tileCollider in tileColliders)
+        HiddenCollider[] tileColliders = FindObjectsOfType<HiddenCollider>();
+        foreach (HiddenCollider tileCollider in tileColliders)
         {
             if (tileCollider.gameObject.CompareTag("Dark"))
             {
                 tileCollider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                //tileCollider.gameObject.SetActive(false);
 
             }
             else if (tileCollider.gameObject.CompareTag("Light"))
             {
                 tileCollider.gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                //tileCollider.gameObject.SetActive(true);
 
             }
         }
     }
 
-    private static void HideTileColliders()
+    /// <summary>
+    /// Change the transparency to 0 so the player does not see the gameobjects
+    /// </summary>
+    private static void HideHiddenColliders()
     {
-        TileColliderr[] tileColliders = FindObjectsOfType<TileColliderr>();
-        foreach (TileColliderr tileCollider in tileColliders)
+        HiddenCollider[] tileColliders = FindObjectsOfType<HiddenCollider>();
+        foreach (HiddenCollider tileCollider in tileColliders)
         {
             tileCollider.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0f);
         }
