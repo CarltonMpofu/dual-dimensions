@@ -88,42 +88,26 @@ public class PlayerController : MonoBehaviour
             return; 
         }
 
-        // if (!bottomCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask(climbLayer, darkClimbLayer))) 
-        // {
-        //     rb.gravityScale = gravityScaleAtStart;  
-        //     myAnimator.SetBool("isClimbing", false);
-        //     return; 
-        // }
-
-
-        //Debug.Log("Do");
         bool playerHasVerticalSpeed = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-        // if(playerHasVerticalSpeed)
-        // {
-        //     myAnimator.SetBool("isClimbing", true);
-        // }
-        // else
-        // {
-        //      myAnimator.SetBool("isClimbing", false);
-        // }
+
         
         rb.velocity = new Vector2(rb.velocity.x, rawInput.y * climbSpeed);
         rb.gravityScale = 0;
-        //Debug.Log(rawInput.y * climbSpeed);
+
    }
 
     //Used by the input system 
     void OnMove(InputValue value)
     {
-        if (!isActive) { return; }
+        if (!isActive) { rawInput = new Vector2(0,0); return; }
         rawInput = value.Get<Vector2>();
     }
 
     //Used by the input system
     void OnJump(InputValue value)
     {
-        if (!isActive) { return; }
+        if (!isActive) { rawInput = new Vector2(0,0); return; }
         if (!feet.IsTouchingLayers(LayerMask.GetMask( new string[] {platformLayer, darkPlatformLayer, LightPlatformLayer}))) { return; }
 
         isJumping = true;
@@ -135,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             isAlive = false;
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
-            //LevelManager.Instance.ReloadLevel();   
+            
         }
         
     }
