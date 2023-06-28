@@ -5803,10 +5803,6 @@ PrefabInstance:
       propertyPath: target
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4968493359507808976, guid: dbda7366cb26782499a6b5f237b36477, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4968493359507808977, guid: dbda7366cb26782499a6b5f237b36477, type: 3}
       propertyPath: m_RootOrder
       value: 4

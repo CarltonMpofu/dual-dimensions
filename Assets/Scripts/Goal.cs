@@ -11,6 +11,8 @@ public class Goal : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Wallet playerWallet;
 
+    GameSession gameSession;
+
     bool isUnlocked;
 
     void Awake() 
@@ -18,6 +20,7 @@ public class Goal : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = defaultColor;
         playerWallet = FindObjectOfType<Wallet>();
+        
     }
 
     void Update()
@@ -36,6 +39,8 @@ public class Goal : MonoBehaviour
         if (other.GetComponent<Wallet>() == playerWallet)
         {
             if(isUnlocked) {
+                gameSession = FindObjectOfType<GameSession>();
+                gameSession.AddTwoLives();
                 LevelManager.Instance.LoadNextLevel();
             }
         }

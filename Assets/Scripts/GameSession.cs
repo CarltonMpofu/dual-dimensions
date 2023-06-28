@@ -22,14 +22,19 @@ public class GameSession : MonoBehaviour
         }
         else
         {
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);       
         }
+    }
+
+    private void Update() {
+        
     }
 
     private void Start() 
     {
+        //Debug.Log(playerLives);
         livesText.text = playerLives.ToString();
-        scoreText.text = score.ToString();
+        scoreText.text = score.ToString(); 
     }
 
     public void AddToScore(int pointsToAdd)
@@ -68,5 +73,14 @@ public class GameSession : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    public void AddTwoLives()
+    {
+        Debug.Log("Added");
+        Debug.Log(playerLives);
+        playerLives += 2;
+        Debug.Log(playerLives);
+        livesText.text = playerLives.ToString();
     }
 }
