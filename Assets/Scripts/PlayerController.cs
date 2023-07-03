@@ -123,5 +123,11 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    public void StopPlayer()
+    {
+        isActive = false;
+        rawInput = new Vector2(0,0);
+    }
     
 }
