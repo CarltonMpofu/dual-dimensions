@@ -121,8 +121,9 @@ public class SwitchDimension : MonoBehaviour
         Pickup[] myCoins = FindObjectsOfType<Pickup>();
         foreach (Pickup coin in myCoins)
         {
-            SpriteRenderer spriteRenderer = coin.gameObject.GetComponent<SpriteRenderer>();
-            spriteRenderer.color = coinColor;
+            // SpriteRenderer spriteRenderer = coin.gameObject.GetComponent<SpriteRenderer>();
+            // spriteRenderer.color = coinColor;
+            coin.gameObject.GetComponent<Animator>().SetBool("InLightDimension", false);
         }
 
         Spike[] mySpikes = FindObjectsOfType<Spike>();
@@ -164,8 +165,9 @@ public class SwitchDimension : MonoBehaviour
         Pickup[] myCoins = FindObjectsOfType<Pickup>();
         foreach (Pickup coin in myCoins)
         {
-            SpriteRenderer spriteRenderer = coin.gameObject.GetComponent<SpriteRenderer>();
-            spriteRenderer.color = defaultCoinColor;
+            // SpriteRenderer spriteRenderer = coin.gameObject.GetComponent<SpriteRenderer>();
+            // spriteRenderer.color = defaultCoinColor;
+            coin.gameObject.GetComponent<Animator>().SetBool("InLightDimension", true);
         }
 
         Spike[] mySpikes = FindObjectsOfType<Spike>();
