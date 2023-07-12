@@ -136,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e3bc7f4800bb74f9f8dc009a226f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultRockColor: {r: 0.7294118, g: 0.5294118, b: 0.34117648, a: 1}

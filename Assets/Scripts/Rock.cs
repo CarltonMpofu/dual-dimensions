@@ -7,5 +7,9 @@ public class Rock : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player"))
             FindObjectOfType<PlayerController>().Die();
+        else if(other.CompareTag("Dark"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

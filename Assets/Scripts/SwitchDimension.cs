@@ -28,6 +28,8 @@ public class SwitchDimension : MonoBehaviour
     [SerializeField] Color defaultClimbingColor;
     [SerializeField] Color defaultRockColor;
     [SerializeField] Color defaultMovingPlatformColor;
+
+    SpawnFallingObjects spawnFallingObjects;
     
 
     bool inLightDimension;
@@ -50,6 +52,8 @@ public class SwitchDimension : MonoBehaviour
         ChangeToLightDimension();
         cullingMaskController.ShowLightObjects();
         EnableLightTilemapCollider2Ds();
+
+        spawnFallingObjects = FindObjectOfType<SpawnFallingObjects>();
 
     }
 
@@ -78,12 +82,16 @@ public class SwitchDimension : MonoBehaviour
 
         if (inLightDimension)
         {
+            if(spawnFallingObjects)
+                spawnFallingObjects.spawnDarkRocks = true;
             ChangeToDarkDimension();
             cullingMaskController.ShowDarkObjects();
             EnableDarkTilemapCollider2Ds();
         }      
         else
         {
+            if(spawnFallingObjects)
+                spawnFallingObjects.spawnDarkRocks = false;
             ChangeToLightDimension();
             cullingMaskController.ShowLightObjects();
             EnableLightTilemapCollider2Ds();

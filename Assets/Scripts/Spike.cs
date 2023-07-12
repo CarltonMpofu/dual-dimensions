@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spike : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other) {
-        FindObjectOfType<PlayerController>().Die();
+        if(other.CompareTag("Player"))
+            FindObjectOfType<PlayerController>().Die();
     }
 }

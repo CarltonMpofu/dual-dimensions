@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpawnFallingObjects : MonoBehaviour
 {
     [SerializeField] GameObject[] objectPrefabs;
+    [SerializeField] Color defaultRockColor;  
     [SerializeField] Transform startPositon;
     [SerializeField] Transform endPositon;
     [SerializeField] float spawnInterval = 1f;
@@ -11,13 +12,10 @@ public class SpawnFallingObjects : MonoBehaviour
 
     private float spawnTimer = 0f;
 
+    public bool spawnDarkRocks;
+
     private void Start() 
     {
-        // BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
-        // float width = boxCollider.bounds.size.x;
-        // Debug.Log("Width: " + width);
-
-        //Debug.Log("Width: " + startPositon.transform.position);
     }
 
     private void Update()
@@ -49,6 +47,10 @@ public class SpawnFallingObjects : MonoBehaviour
         // Change the color to black if in dark mode
 
         GameObject spawnedObject = Instantiate(objectPrefab, spawnPosition, spawnRotation);
+        if(!spawnDarkRocks)
+            spawnedObject.GetComponent<SpriteRenderer>().color = defaultRockColor;
+        else
+            spawnedObject.GetComponent<SpriteRenderer>().color = Color.black;
 
         float fallSpeed = Random.Range(minFallSpeed, maxFallSpeed);
         Rigidbody2D rb = spawnedObject.GetComponent<Rigidbody2D>();
