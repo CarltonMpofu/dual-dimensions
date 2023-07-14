@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScenePersist : MonoBehaviour
 {
+
     int coinsCollectedInScene = 0;
-    private void Awake() {
+    private void Awake() 
+    {
         
         int numberOfPersists = FindObjectsOfType<ScenePersist>().Length; 
 
@@ -18,6 +21,7 @@ public class ScenePersist : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
 
     public void ResetScenePersist()
     {

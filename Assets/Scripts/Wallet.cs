@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Wallet : MonoBehaviour
 {
+    DisplayCoins displayCoins;
+
     int coins = 0;
+
+    private void Start() 
+    {
+        displayCoins = FindObjectOfType<DisplayCoins>();    
+    }
 
     public int GetCoins()
     {
@@ -20,6 +27,7 @@ public class Wallet : MonoBehaviour
     {
         coins++;
         FindObjectOfType<ScenePersist>().IncrementCoinsCollected();
+        displayCoins.ShowCoins();
     }
 
 }

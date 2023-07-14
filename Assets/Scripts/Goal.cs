@@ -70,5 +70,10 @@ public class Goal : MonoBehaviour
         rb.velocity += jumpForce;
     }
 
+    public int GetCoinTarget()
+    {
+        return target;
+    }
+
     
 }

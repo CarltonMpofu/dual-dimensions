@@ -20,7 +20,6 @@ public class Pickup : MonoBehaviour
             if(wallet != null)
             {
                 wallet.IncrementCoins();
-                FindObjectOfType<GameSession>().AddToScore(pointsForCoinPickup);
                 Destroy(gameObject);
             }
         }

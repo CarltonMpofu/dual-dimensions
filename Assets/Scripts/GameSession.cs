@@ -8,9 +8,8 @@ using TMPro;
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 5;
-    [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI livesText;
-    [SerializeField] TextMeshProUGUI scoreText;
+    
 
     private void Awake() {
         
@@ -34,13 +33,6 @@ public class GameSession : MonoBehaviour
     {
         //Debug.Log(playerLives);
         livesText.text = playerLives.ToString();
-        scoreText.text = score.ToString(); 
-    }
-
-    public void AddToScore(int pointsToAdd)
-    {
-        score += pointsToAdd;
-        scoreText.text = score.ToString();
     }
 
     public void ProcessPlayerDeath()
@@ -58,7 +50,6 @@ public class GameSession : MonoBehaviour
     private void TakeLife()
     {
         playerLives -= 1;
-        //livesText.text = playerLives.ToString();
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         LevelManager.Instance.ReloadLevel();
         livesText.text = playerLives.ToString();
@@ -70,17 +61,11 @@ public class GameSession : MonoBehaviour
         LevelManager.Instance.LoadGameOverScene();
     }
 
-    public int GetScore()
-    {
-        return score;
-    }
-
     public void AddTwoLives()
     {
-        Debug.Log("Added");
-        Debug.Log(playerLives);
+        // Debug.Log(playerLives);
         playerLives += 2;
-        Debug.Log(playerLives);
+        // Debug.Log(playerLives);
         livesText.text = playerLives.ToString();
     }
 }

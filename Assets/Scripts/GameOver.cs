@@ -11,7 +11,6 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         gameSession = FindObjectOfType<GameSession>();
-        scoreText.text =  $"SCORE:\n{gameSession.GetScore().ToString()}";
     }
 
     // Update is called once per frame
